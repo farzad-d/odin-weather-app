@@ -13,6 +13,10 @@ export default [
     plugins: {
       prettier: eslintPluginPrettier,
     },
+    env: {
+      browser: true,
+      es2021: true,
+    },
     rules: {
       "prettier/prettier": "error",
     },
