@@ -1,21 +1,44 @@
 import "normalize.css";
 import "./styles.css";
+import cardCreator from "./ui.js";
 
-const API_KEY = "27JLA8N2LVW4F2667X4PCYQDZ";
+const searchBox = document.getElementById("search-box");
+let currentLocation = searchBox.dataset.currentLocation;
 
-async function getWeather(location) {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=${API_KEY}`;
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-    }
-  } catch (err) {
-    console.error("Failed!", err);
+function toTitleCase(str) {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+async function main() {
+  currentLocation ||= "Shiraz";
+  const { default: getWeather } = await import("./weather.js");
+  const weather = await getWeather(toTitleCase(currentLocation), "metric");
+  document.getElementById("cards").replaceChildren();
+
+  if (weather.error) {
+    const errorMessage = document.createElement("div");
+    errorMessage.id = "error-massage";
+    errorMessage.textContent = weather.error;
+    document.querySelector("body").appendChild(errorMessage);
+    return;
+  }
+
+  for (let i = 0; i < 6; i++) {
+    weather.setDay(i);
+    cardCreator(weather);
   }
 }
 
-getWeather("london");
+main();
 
-//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london/?key=27JLA8N2LVW4F2667X4PCYQDZ
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  currentLocation = formData.get("search-box");
+  main();
+});

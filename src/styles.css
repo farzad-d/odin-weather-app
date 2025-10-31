@@ -1,3 +1,60 @@
 body {
-  background-color: gray;
+  background-color: #092635;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  gap: 40px;
+}
+
+.card {
+  width: 220px;
+  height: 220px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  color: lightgray;
+  background-color: #1b4242;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
+  padding: 15px;
+}
+
+.card svg {
+  width: 80px;
+  height: 80px;
+  fill: yellow;
+  margin: 0;
+}
+
+#cards {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+h1 {
+  margin: 60px 0 0 0;
+}
+
+#weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+#error-massage {
+  color: #ff6e39;
+  font-size: 1.4rem;
 }
