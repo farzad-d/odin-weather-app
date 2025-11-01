@@ -16,6 +16,23 @@
       />
       <button type="submit">Go</button>
     </form>
+    <div id="units">
+      <div>
+        <label for="metric">°C</label>
+        <input
+          type="radio"
+          id="metric"
+          value="metric"
+          name="unit-group"
+          checked
+        />
+      </div>
+      <div>
+        <label for="us">°F</label>
+        <input type="radio" id="us" value="us" name="unit-group" />
+      </div>
+    </div>
+    <div id="message"></div>
     <div id="cards"></div>
   </body>
 </html>

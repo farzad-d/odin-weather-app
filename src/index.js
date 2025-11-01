@@ -2,9 +2,6 @@ import "normalize.css";
 import "./styles.css";
 import cardCreator from "./ui.js";
 
-const searchBox = document.getElementById("search-box");
-let currentLocation = searchBox.dataset.currentLocation;
-
 function toTitleCase(str) {
   return str
     .toLowerCase()
@@ -13,18 +10,36 @@ function toTitleCase(str) {
     .join(" ");
 }
 
+let currentUnitGroup = "metric";
+
+const unitRadios = document.querySelectorAll("input[name='unit-group']");
+unitRadios.forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      currentUnitGroup = e.target.value;
+      main();
+    }
+  });
+});
+
+const searchBox = document.getElementById("search-box");
+let currentLocation = searchBox.dataset.currentLocation;
+
 async function main() {
   currentLocation ||= "Shiraz";
   const { default: getWeather } = await import("./weather.js");
-  const weather = await getWeather(toTitleCase(currentLocation), "metric");
+  const weather = await getWeather(
+    toTitleCase(currentLocation),
+    currentUnitGroup
+  );
   document.getElementById("cards").replaceChildren();
 
+  const message = document.getElementById("message");
   if (weather.error) {
-    const errorMessage = document.createElement("div");
-    errorMessage.id = "error-massage";
-    errorMessage.textContent = weather.error;
-    document.querySelector("body").appendChild(errorMessage);
+    message.textContent = weather.error;
     return;
+  } else {
+    message.textContent = "";
   }
 
   for (let i = 0; i < 6; i++) {
@@ -40,5 +55,6 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   currentLocation = formData.get("search-box");
+  form.reset();
   main();
 });

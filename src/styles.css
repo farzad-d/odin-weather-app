@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   height: 100vh;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .card {
@@ -54,7 +54,13 @@ h1 {
   justify-content: center;
 }
 
-#error-massage {
-  color: #ff6e39;
+#message {
+  color: orangered;
   font-size: 1.4rem;
+}
+
+#units {
+  font-size: 1.4rem;
+  display: flex;
+  gap: 18px;
 }
