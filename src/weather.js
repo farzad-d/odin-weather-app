@@ -17,12 +17,14 @@ async function getWeather(location, unit) {
       temp: data.days[0].temp,
       conditions: data.days[0].conditions,
       humidity: data.days[0].humidity,
+      icon: data.days[0].icon,
       unit,
       setDay(num) {
         this.date = data.days[num].datetime;
         this.temp = data.days[num].temp;
         this.conditions = data.days[num].conditions;
         this.humidity = data.days[num].humidity;
+        this.icon = data.days[num].icon;
       },
     };
   } catch (err) {
@@ -30,7 +32,7 @@ async function getWeather(location, unit) {
   }
 }
 
-// Full api JSON
-//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric
-
 export default getWeather;
+
+// JSON
+//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric

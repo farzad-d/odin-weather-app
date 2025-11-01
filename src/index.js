@@ -48,8 +48,6 @@ async function main() {
   }
 }
 
-main();
-
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -58,3 +56,5 @@ form.addEventListener("submit", (e) => {
   form.reset();
   main();
 });
+
+main();
