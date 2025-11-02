@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -13,12 +19,12 @@
         id="search-box"
         name="search-box"
         placeholder="Search location"
+        required
       />
       <button type="submit">Go</button>
     </form>
     <div id="units">
       <div>
-        <label for="metric">°C</label>
         <input
           type="radio"
           id="metric"
@@ -26,10 +32,11 @@
           name="unit-group"
           checked
         />
+        <label class="metric-unit-label" for="metric">°C</label>
       </div>
       <div>
-        <label for="us">°F</label>
         <input type="radio" id="us" value="us" name="unit-group" />
+        <label class="us-unit-label" for="us">°F</label>
       </div>
     </div>
     <div id="message"></div>

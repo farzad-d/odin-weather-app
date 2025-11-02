@@ -12,7 +12,7 @@ async function getWeather(location, unit) {
     }
     const data = await response.json();
     return {
-      location: data.resolvedAddress,
+      location: data.address,
       date: data.days[0].datetime,
       temp: data.days[0].temp,
       conditions: data.days[0].conditions,
@@ -35,4 +35,4 @@ async function getWeather(location, unit) {
 export default getWeather;
 
 // JSON
-//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric
+//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/newyork/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric

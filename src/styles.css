@@ -1,5 +1,6 @@
 body {
-  background-color: #092635;
+  font-family: Open Sans;
+  background-color: #082032;
   color: white;
   display: flex;
   flex-direction: column;
@@ -11,16 +12,16 @@ body {
 .card {
   width: 220px;
   height: 220px;
-  font-size: 1.2rem;
   border-radius: 8px;
-  color: lightgray;
-  background-color: #1b4242;
+  color: white;
+  background-color: #334756;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   gap: 5px;
   padding: 15px;
+  line-height: 20px;
 }
 
 .card svg {
@@ -62,4 +63,88 @@ h1 {
   font-size: 1.4rem;
   display: flex;
   gap: 18px;
+}
+
+#search-box {
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background-color: #bdd3e6;
+  height: 26px;
+  width: 240px;
+  padding: 1px 6px;
+  font-size: 1.1rem;
+}
+
+#search-box:hover {
+  background-color: #86b3da;
+}
+
+button[type="submit"] {
+  border: none;
+  height: 28px;
+  width: 48px;
+  border-radius: 0 5px 5px 0;
+  font-weight: bold;
+  color: #082032;
+  background-color: #bdd3e6;
+  transition: background-color 0.3s ease-in;
+}
+
+button[type="submit"]:hover {
+  background-color: #86b3da;
+}
+
+button[type="submit"]:active {
+  background-color: #4298e4;
+}
+
+form {
+  display: flex;
+  gap: 2px;
+}
+
+#units {
+  display: flex;
+  gap: 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  border-color: #bdd3e6;
+  background-color: #bdd3e6;
+  color: black;
+}
+
+.us-unit-label,
+.metric-unit-label {
+  padding: 1px 6px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.us-unit-label {
+  border-color: #bdd3e6;
+  color: #bdd3e6;
+  border-style: solid;
+  border-width: 2px 2px 2px 0;
+  border-radius: 0 16px 16px 0;
+}
+
+.metric-unit-label {
+  border-color: #bdd3e6;
+  color: #bdd3e6;
+  border-style: solid;
+  border-width: 2px 0 2px 2px;
+  border-radius: 16px 0 0 16px;
 }
