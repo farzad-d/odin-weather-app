@@ -35,4 +35,4 @@ async function getWeather(location, unit) {
 export default getWeather;
 
 // JSON
-//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/newyork/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric
+//* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london/?key=27JLA8N2LVW4F2667X4PCYQDZ&unitGroup=metric

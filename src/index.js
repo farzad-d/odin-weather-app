@@ -24,27 +24,38 @@ unitRadios.forEach((radio) => {
 
 const searchBox = document.getElementById("search-box");
 let currentLocation = searchBox.dataset.currentLocation;
+const loading = document.getElementById("loading");
 
 async function main() {
-  currentLocation ||= "Shiraz";
-  const { default: getWeather } = await import("./weather.js");
-  const weather = await getWeather(
-    toTitleCase(currentLocation),
-    currentUnitGroup
-  );
-  document.getElementById("cards").replaceChildren();
+  loading.hidden = false;
+  loading.classList.remove("hidden");
 
-  const message = document.getElementById("message");
-  if (weather.error) {
-    message.textContent = weather.error;
-    return;
-  } else {
-    message.textContent = "";
-  }
+  try {
+    currentLocation ||= "London";
+    const { default: getWeather } = await import("./weather.js");
+    const weather = await getWeather(
+      toTitleCase(currentLocation),
+      currentUnitGroup
+    );
+    document.getElementById("cards").replaceChildren();
 
-  for (let i = 0; i < 6; i++) {
-    weather.setDay(i);
-    cardCreator(weather);
+    const message = document.getElementById("message");
+    if (weather.error) {
+      message.textContent = weather.error;
+      return;
+    } else {
+      message.textContent = "";
+    }
+
+    for (let i = 0; i < 6; i++) {
+      weather.setDay(i);
+      cardCreator(weather);
+    }
+  } catch (err) {
+    console.error("Error fetching weather:", err);
+  } finally {
+    loading.hidden = true;
+    loading.classList.add("hidden");
   }
 }
 

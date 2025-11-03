@@ -1,5 +1,19 @@
 import getWeatherIcon from "./icons.js";
 
+function dateHandler(weatherDate) {
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  const toISO = (date) => date.toISOString().split("T")[0];
+  const todayISO = toISO(today);
+  const tomorrowISO = toISO(tomorrow);
+
+  if (weatherDate === todayISO) return "Today";
+  if (weatherDate === tomorrowISO) return "Tomorrow";
+  return weatherDate;
+}
+
 function cardCreator(weatherData) {
   const cards = document.getElementById("cards");
   const card = document.createElement("div");
@@ -18,7 +32,7 @@ function cardCreator(weatherData) {
   location.textContent = weatherData.location;
 
   const date = document.createElement("li");
-  date.textContent = weatherData.date;
+  date.textContent = dateHandler(weatherData.date);
 
   let unit = "°C";
   if (weatherData.unit === "us") unit = "°F";
