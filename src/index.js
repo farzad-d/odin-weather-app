@@ -69,3 +69,5 @@ form.addEventListener("submit", (e) => {
 });
 
 main();
+
+//todo: Add promise version of the async/await functions in the index.js and weather.js

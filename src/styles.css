@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   height: 100vh;
   align-items: center;
-  gap: 40px;
+  gap: 24px;
 }
 
 .card {
@@ -31,16 +31,17 @@ body {
 }
 
 #cards {
-  width: fit-content;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
   gap: 10px;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, 250px);
+  width: 100vw;
+  max-width: 770px;
 }
 
 h1 {
-  margin: 40px 0 0 0;
+  margin: 18px 0 0 0;
+  color: lightgray;
 }
 
 #weather-info {
@@ -69,7 +70,7 @@ h1 {
   border: none;
   border-radius: 5px 0 0 5px;
   background-color: #bdd3e6;
-  height: 26px;
+  height: 28px;
   width: 240px;
   padding: 1px 6px;
   font-size: 1.1rem;
@@ -86,9 +87,10 @@ h1 {
 
 button[type="submit"] {
   border: none;
-  height: 28px;
+  height: 30px;
   width: 48px;
   border-radius: 0 5px 5px 0;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #082032;
   background-color: #bdd3e6;
